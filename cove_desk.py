@@ -18,13 +18,12 @@ import json
 from google import genai
 from google.genai import types
 
-API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-if not API_KEY:
+if not (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")):
     raise RuntimeError(
         "Set GEMINI_API_KEY or GOOGLE_API_KEY before running a demo."
     )
 
-client = genai.Client(api_key=API_KEY)
+client = genai.Client()
 MODEL = "gemini-3.6-flash"
 
 COMPANY = "Cove"
